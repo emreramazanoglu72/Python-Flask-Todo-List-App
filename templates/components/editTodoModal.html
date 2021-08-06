@@ -1,0 +1,42 @@
+<!-- Modal -->
+{%for item in todoList%}
+<div class="modal fade" id="editModal-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="/edit-todo/{{item[0]}}" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Todo Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group">
+                            <label for="name">Todo Name</label>
+                            <input type="text" class="form-control" name="name" value="{{item[1]}}"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" value="Completed" default-value="{{item[2]}}" name="status">
+                                <option {% if item[2]=="Not Completed" %} selected="selected"{% endif %} value="Not Completed">
+                                    Not Completed
+                                </option>
+                                <option  {% if item[2]=="Completed" %} selected="selected"{% endif %}  value="Completed">Completed</option>
+                                <option {% if item[2]=="It is cancelled" %} selected="selected"{% endif %}  value="It is cancelled">It is cancelled</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" href="#">Update</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{%endfor%}

@@ -1,0 +1,65 @@
+<div class="col-sm-8 card p-2 {% if todoList == [] %} d-none {%endif%}">
+  <h4>Todo List</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for item in todoList%}
+      <tr>
+        <td scope="row">#</td>
+        <td>{{item[1]}}</td>
+        <td>
+          {% if item[2] == "Not Completed" %}
+          <span class="badge bg-dark text-white p-2 pr-4 pl-4"
+            >{{item[2]}}</span
+          >
+          {%elif item[2] == "Completed" %}
+          <span class="badge bg-success text-white p-2 pr-4 pl-4"
+            >{{item[2]}}</span
+          >
+          {%elif item[2] =="It is cancelled" %}
+          <span class="badge bg-danger text-white p-2 pr-4 pl-4"
+            >{{item[2]}}</span
+          >
+          {% endif %}
+        </td>
+        <td>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="triggerId"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Action
+            </button>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+              <a
+                class="dropdown-item btn btn-success"
+                data-toggle="modal"
+                data-target="#editModal-{{item[0]}}"
+                href="#"
+                >Edit</a
+              >
+              <a
+                class="dropdown-item btn btn-danger"
+                href="/delete_todo/{{item[0]}}"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

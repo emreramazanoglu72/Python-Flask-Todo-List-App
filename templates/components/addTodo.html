@@ -1,0 +1,18 @@
+<div class=" card h-100 p-2 mr-1 {% if todoList == [] %} col-sm-12 {%else%} col-sm-3 {%endif%}">
+  <form action="/add_todo" method="post">
+    <h4>Todo Add</h4>
+    <div class="form-group">
+      <label for="name">Todo Name</label>
+      <input type="text" class="form-control" name="name" />
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select class="form-control" name="status">
+        <option value="Not Completed">Not Completed</option>
+        <option value="Completed">Completed</option>
+        <option value="It is cancelled">It is cancelled</option>
+      </select>
+    </div>
+    <button class="btn btn-dark w-100">Save</button>
+  </form>
+</div>
